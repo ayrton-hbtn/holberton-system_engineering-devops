@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -Ra | grep ".gif" | cut -d "." -f 1
+find ./ -name "*.gif" | rev | cut -d '/' -f 1 | cut -d '.' -f 2 | rev
