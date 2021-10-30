@@ -7,9 +7,9 @@
 
 path="/var/run/myscript.pid"
 echo $$ > "$path"
-trap 'echo "I hate the kill command" && sudo rm $path && exit' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
-trap 'sudo rm "$path"' SIGQUIT
+trap 'echo "I hate the kill command"; sudo rm $path; exit' SIGTERM
+trap 'sudo rm $path; exit' SIGQUIT
 while true
 do
 	echo "To infinity and beyond"
