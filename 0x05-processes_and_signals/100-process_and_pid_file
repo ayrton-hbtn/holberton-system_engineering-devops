@@ -3,7 +3,7 @@
 # Displays To infinity and beyond indefinitely
 # Displays I hate the kill command when receiving a SIGTERM signal
 # Displays Y U no love me?! when receiving a SIGINT signal
-# Deletes the file /var/run/my.pid and terminates itself when receiving a SIGQUIT or SIGTERM signal
+# Deletes the file /var/run/myscript.pid and terminates itself when receiving a SIGQUIT or SIGTERM signal
 
 path="/var/run/myscript.pid"
 echo $$ > "$path"
