@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# hola
+service apache2 restart
