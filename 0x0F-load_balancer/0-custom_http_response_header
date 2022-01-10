@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# configures nginx adding header to server
+
+printf %s "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    add_header X-Served-By $HOSTNAME;
+}" > /etc/nginx/sites-available/default
+
+sudo service nginx restart
