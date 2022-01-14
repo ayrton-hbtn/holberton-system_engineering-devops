@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# configure domain zone
+
+subdomains="www lb-01 web-01 web-02"
+
+if [ "$#" -lt 1 ];
+then
+    echo "must provide with a hostname"
+    exit
+fi
+
+dom="$1"
+if [ "$#" == 2 ];
+then
+    subdomains="$2"
+fi
+
+for sub in $subdomains; do
+    dig "$sub.$dom" | grep -A1 'ANSWER SECTION:' | tail -n1 > temp.txt
+    echo "The subdomain $sub"
+    awk '{print " is a " $4 " record and points to "$5}' temp.txt
+done
+rm temp.txt
