@@ -10,7 +10,7 @@ then
 fi
 
 dom="$1"
-if [ "$#" == 2 ];
+if [ "$#" >= 2 ];
 then
     subdomains="$2"
 fi
