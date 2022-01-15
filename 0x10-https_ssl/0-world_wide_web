@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# configure domain zone
+# prints subdomains of argument (domain)
 
 subdomains="www lb-01 web-01 web-02"
 
