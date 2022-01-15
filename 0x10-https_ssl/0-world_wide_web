@@ -5,12 +5,12 @@ subdomains="www lb-01 web-01 web-02"
 
 if [ "$#" -lt 1 ];
 then
-    echo "must provide with a hostname"
+    echo "must provide with a domain"
     exit
 fi
 
 dom="$1"
-if [ "$#" >= 2 ];
+if [ "$#" -ge 2 ];
 then
     subdomains="$2"
 fi
