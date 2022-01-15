@@ -17,7 +17,7 @@ fi
 
 for sub in $subdomains; do
     dig "$sub.$dom" | grep -A1 'ANSWER SECTION:' | tail -n1 > temp.txt
-    echo "The subdomain $sub"
+    echo -n "The subdomain $sub"
     awk '{print " is a " $4 " record and points to "$5}' temp.txt
 done
 rm temp.txt
