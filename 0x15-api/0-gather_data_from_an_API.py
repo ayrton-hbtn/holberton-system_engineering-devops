@@ -5,10 +5,8 @@
 if __name__ == "__main__":
     import requests as req
     from sys import argv
-    todos = req.get('https://jsonplaceholder.typicode.com/todos')
-    todos = todos.json()
-    users = req.get('https://jsonplaceholder.typicode.com/users')
-    users = users.json()
+    todos = req.get('https://jsonplaceholder.typicode.com/todos').json()
+    users = req.get('https://jsonplaceholder.typicode.com/users').json()
     user = {}
     for elem in users:
         if elem["id"] == int(argv[1]):

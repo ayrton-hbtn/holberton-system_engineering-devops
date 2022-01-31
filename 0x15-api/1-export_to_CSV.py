@@ -6,10 +6,8 @@ if __name__ == "__main__":
     import requests as req
     from sys import argv
     import csv
-    todos = req.get('https://jsonplaceholder.typicode.com/todos')
-    todos = todos.json()
-    users = req.get('https://jsonplaceholder.typicode.com/users')
-    users = users.json()
+    todos = req.get('https://jsonplaceholder.typicode.com/todos').json()
+    users = req.get('https://jsonplaceholder.typicode.com/users').json()
     user = {}
     for elem in users:
         if elem["id"] == int(argv[1]):
@@ -25,9 +23,9 @@ if __name__ == "__main__":
         line.append(argv[1])
         line.append(user["username"])
         if elem["completed"]:
-            line.append("True")
+            line.append(True)
         else:
-            line.append("False")
+            line.append(False)
         line.append(elem["title"])
         export_to_cvs.append(line)
     with open('{}.csv'.format(argv[1]), 'w', newline='') as f:

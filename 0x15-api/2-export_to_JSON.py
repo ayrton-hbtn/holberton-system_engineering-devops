@@ -6,10 +6,8 @@ if __name__ == "__main__":
     import requests as req
     from sys import argv
     import json
-    todos = req.get('https://jsonplaceholder.typicode.com/todos')
-    todos = todos.json()
-    users = req.get('https://jsonplaceholder.typicode.com/users')
-    users = users.json()
+    todos = req.get('https://jsonplaceholder.typicode.com/todos').json()
+    users = req.get('https://jsonplaceholder.typicode.com/users').json()
     user = {}
     for elem in users:
         if elem["id"] == int(argv[1]):
@@ -23,6 +21,7 @@ if __name__ == "__main__":
         del elem['userId']
         del elem['id']
         elem['username'] = user['username']
+        elem['task'] = elem.pop('title')
     user_todos_export_json = {}
     user_todos_export_json[argv[1]] = user_todos
     with open("{}.json".format(argv[1]), "w") as f:
