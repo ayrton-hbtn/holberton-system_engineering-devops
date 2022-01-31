@@ -22,7 +22,7 @@ if __name__ == "__main__":
                 completed_tasks = completed_tasks + 1
                 user_todos_compl.append(dict(elem))
     total_tasks = len(user_todos)
-    print("Employee {} is done with tasks ({}/{}):"
+    print("Employee {} is done with tasks({}/{}):"
           .format(user["name"], completed_tasks, total_tasks))
     for task in user_todos_compl:
         print("\t {}".format(task["title"]))
