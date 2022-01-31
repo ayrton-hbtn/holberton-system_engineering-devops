@@ -6,8 +6,9 @@ from sys import argv
 
 if __name__ == "__main__":
     user_id = int(argv[1])
+
     def get_user():
-        """function to get user from json response, matching by 'id' from argv"""
+        """function to get user from json response, matching by id from argv"""
         users = req.get('https://jsonplaceholder.typicode.com/users').json()
         user = {}
         for elem in users:
@@ -15,7 +16,6 @@ if __name__ == "__main__":
                 user = dict(elem)
                 break
         return user
-
 
     def get_todos():
         """function to get list of Employee's completed tasks"""
@@ -32,8 +32,8 @@ if __name__ == "__main__":
                     user_todos_compl.append(dict(elem))
         total_tasks = len(user_todos)
         print("Employee {} is done with tasks({}/{}):"
-            .format(user["name"], completed_tasks, total_tasks))
+              .format(user["name"], completed_tasks, total_tasks))
         for task in user_todos_compl:
             print("\t {}".format(task["title"]))
-    
+
     get_todos()
