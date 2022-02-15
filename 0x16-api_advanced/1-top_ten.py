@@ -6,7 +6,7 @@ import requests as req
 def top_ten(subreddit):
     """queries the titles of the first 10 hot posts
     listed for a given subreddit"""
-    res = req.get('https://reddit.com/r/{}/top/.json?limit=10'
+    res = req.get('https://reddit.com/r/{}/hot/.json?limit=10'
                   .format(subreddit),
                   headers={'User-Agent': 'Pepocho'}).json()
     try:
