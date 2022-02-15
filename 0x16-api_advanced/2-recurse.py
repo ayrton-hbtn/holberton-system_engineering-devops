@@ -6,8 +6,8 @@ import requests as req
 def recurse(subreddit, hot_list=[], after=''):
     """returns a list containing the titles of all
     hot articles for a given subreddit, recursively"""
-    res = req.get(f'https://reddit.com/r/{subreddit}/hot/.json?limit=100\
-                  &after={after}',
+    res = req.get('https://reddit.com/r/{}/hot/.json?limit=100\
+                  &after={}'.format(subreddit, after),
                   headers={'User-Agent': 'Pepocho'}).json()
     try:
         after = res['data']['after']
