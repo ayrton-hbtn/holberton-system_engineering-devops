@@ -1,18 +1,14 @@
 #!/usr/bin/python3
 
-import praw
-
-reddit = praw.Reddit(
-    client_id='Fqw0sJNuqMWRB8LLVr-Cqg',
-    client_secret='YzGW257awWZBnMB5wsagXvpOPT7HLg',
-    user_agent='hbtn_red_api'
-)
+import requests as req
 
 
 def number_of_subscribers(subreddit):
     """queries a subreddit and returns the number
     of subscribers"""
-    if not reddit.subreddits.search_by_name(subreddit):
+    res = req.get(f'https://reddit.com/r/{subreddit}.json',
+                  headers={'User-Agent': 'Pepocho'}).json()
+    try:
+        return (res['data']['children'][0]['data']['subreddit_subscribers'])
+    except KeyError:
         return 0
-    subs = reddit.subreddit(subreddit).subscribers
-    return subs
