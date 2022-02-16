@@ -14,12 +14,14 @@ def count_words(subreddit, word_list, after='', word_count={}):
     except KeyError:
         return
     for post in res['data']['children']:
+        title = post['data']['title'].split(' ')
         for word in word_list:
-            if word.lower() in post['data']['title'].lower():
-                if word.lower() in word_count.keys():
-                    word_count[word.lower()] += 1
-                else:
-                    word_count[word.lower()] = 1
+            for title_word in title:
+                if word.lower() == title_word.lower():
+                    if word.lower() in word_count.keys():
+                        word_count[word.lower()] += 1
+                    else:
+                        word_count[word.lower()] = 1
     if not after:
         word_list.sort()
         for word in word_list:
