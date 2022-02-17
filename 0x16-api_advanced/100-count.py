@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """100-count"""
 import requests as req
-import collections
 
 
 def count_words(subreddit, word_list, after='', word_count={}):
@@ -24,10 +23,9 @@ def count_words(subreddit, word_list, after='', word_count={}):
                     else:
                         word_count[word.lower()] = 1
     if not after:
-        word_count = collections.OrderedDict(sorted(word_count.items()))
-        word_count = collections.OrderedDict(sorted(word_count.items(),
-                                             key=lambda kv: kv[1],
-                                             reverse=True))
+        word_count = dict(sorted(word_count.items()))
+        word_count = dict(sorted(word_count.items(), key=lambda kv: kv[1],
+                          reverse=True))
         for word, count in word_count.items():
             print('{}: {}'.format(word, count))
         return
