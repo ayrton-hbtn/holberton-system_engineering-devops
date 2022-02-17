@@ -24,7 +24,7 @@ def count_words(subreddit, word_list, after='', word_count={}):
                         word_count[word.lower()] = 1
     if not after:
         word_list.sort()
-        for word in word_list:
+        for word in set(word_list):
             if word in word_count.keys():
                 print('{}: {}'.format(word, word_count[word]))
         return
