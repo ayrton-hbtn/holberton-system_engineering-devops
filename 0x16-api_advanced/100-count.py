@@ -24,11 +24,10 @@ def count_words(subreddit, word_list, after='', word_count={}):
                     else:
                         word_count[word.lower()] = 1
     if not after:
-        sorted_tup = sorted(word_count.items(), key=lambda item: item[1],
-                            reverse=True)
+        sorted_tup = sorted(word_count.items(),
+                            key=lambda item: (item[1], item[0]), reverse=True)
         word_count = collections.OrderedDict(sorted_tup)
-        word_list.sort()
-        for word in word_count.keys():
-            print('{}: {}'.format(word, word_count[word]))
+        for word, count in word_count.items():
+            print('{}: {}'.format(word, count))
         return
     return count_words(subreddit, word_list, after, word_count)
