@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """100-count"""
-import requests as req
 import collections
+import requests as req
 
 
 def count_words(subreddit, word_list, after='', word_count={}):
